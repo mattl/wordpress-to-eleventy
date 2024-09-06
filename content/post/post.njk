@@ -1,0 +1,27 @@
+---
+pagination:
+  data: posts
+  alias: post
+  size: 1
+permalink: "/{{ post.dateURL }}/{{ post.slug | slug }}/index.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ post.title }}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  body { font-size: 100%; font-family: sans-serif; }
+</style>
+</head>
+<body>
+
+<h1>{{ post.title }}</h1>
+
+<p><time datetime="{{ post.dateYMD }}">{{ post.dateFriendly }}</time></p>
+
+{{ post.content | safe }}
+
+</body>
+</html>

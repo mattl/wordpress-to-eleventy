@@ -1,0 +1,27 @@
+---
+pagination:
+  data: pages
+  alias: page
+  size: 1
+permalink: "/{{ page.slug | slug }}/index.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ page.title }}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  body { font-size: 100%; font-family: sans-serif; }
+</style>
+</head>
+<body>
+
+<h1>{{ page.title }}</h1>
+
+<p><time datetime="{{ page.dateYMD }}">{{ page.dateFriendly }}</time></p>
+
+{{ page.content | safe }}
+
+</body>
+</html>
