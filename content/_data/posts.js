@@ -1,6 +1,7 @@
 // fetch WordPress posts
 const
-  wordpressAPI = 'https://blog.mat.tl/wp-json/wp/v2/posts?orderby=date&order=desc&per_page=100',
+  domainName = process.env.DOMAIN_NAME;
+  wordpressAPI = 'https://' + domainName + '/wp-json/wp/v2/posts?orderby=date&order=desc&per_page=100',
   fetch = require('node-fetch');
 
 // fetch number of WordPress post pages
