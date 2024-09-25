@@ -1,8 +1,11 @@
 // fetch WordPress posts
-const
-  domainName = process.env.DOMAIN_NAME;
-  wordpressAPI = 'https://' + domainName + '/wp-json/wp/v2/posts?orderby=date&order=desc&per_page=100',
-  fetch = require('node-fetch');
+const domainName = process.env.DOMAIN_NAME;
+if (domainName.endsWith("wordpress.com")) {
+  wordpressAPI = 'https://public-api.wordpress.com/wp/v2/sites/' + domainName + '/posts?orderby=date&order=desc&per_page=100';
+} else {
+  wordpressAPI = 'https://' + domainName + '/wp-json/wp/v2/posts?orderby=date&order=desc&per_page=100';
+}
+fetch = require('node-fetch');
 
 // fetch number of WordPress post pages
 async function wpPostPages() {
@@ -10,11 +13,10 @@ async function wpPostPages() {
   try {
 
     const res = await fetch(`${ wordpressAPI }&_fields=id&page=1`);
-    console.log ("Found " + res.headers.get('X-WP-TotalPages') + " posts");
+    console.log("Found " + res.headers.get('X-WP-TotalPages') + " posts");
     return res.headers.get('X-WP-TotalPages') || 0;
 
-  }
-  catch(err) {
+  } catch (err) {
     console.log(`WordPress API call failed: ${err}`);
     return 0;
   }
@@ -46,8 +48,7 @@ async function wpPosts(page = 1) {
         };
       });
 
-  }
-  catch (err) {
+  } catch (err) {
     console.log(`WordPress posts API call failed: ${err}`);
     return null;
   }
@@ -108,10 +109,10 @@ module.exports = async function() {
   // fetch all pages of posts
   const wpList = [];
   for (let w = 1; w <= wpPages; w++) {
-    wpList.push( wpPosts(w) );
+    wpList.push(wpPosts(w));
   }
 
-  const all = await Promise.all( wpList );
+  const all = await Promise.all(wpList);
   return all.flat();
 
 };
