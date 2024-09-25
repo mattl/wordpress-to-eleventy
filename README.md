@@ -2,6 +2,8 @@
 
 A tool to help you migrate from WordPress to Eleventy, but also can be used with WordPress to make a static website.
 
+Not affliated with WordPress or Eleventy.
+
 1. Clone this repo.
 2. `npm install`
 3. `DOMAIN_NAME=example.com npx eleventy --output=_site`
