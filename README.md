@@ -12,7 +12,7 @@
 
 You should get a static copy of your WordPress pages and posts in _site.
 
-I set up a demo site with a post and a couple pages you can see it here:
+I set up a [demo site](https://suchexample.wordpress.com) with a post and a couple pages you can see it here:
 
 `DOMAIN_NAME=suchexample.wordpress.com npx eleventy --output=_site`
 
