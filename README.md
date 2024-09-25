@@ -5,6 +5,7 @@
 3. `DOMAIN_NAME=example.com npx eleventy --output=_site`
 
 * This will assume https://
+* This now supports wordpress.com blogs
 
 You should get a static copy of your WordPress pages and posts in _site.
 
